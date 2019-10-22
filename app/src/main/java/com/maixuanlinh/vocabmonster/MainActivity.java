@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 if (countWordsUsingSplit(word) == 1) {
                     new TakeLemmaTask(word, MainActivity.this).execute(inflections(word));
                 } else {
-                    word+=": .\n";
+                    word+=": ##.\n";
                     wordList.add(word);
                 }
 
@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String fuckingFinal = "";
                 for (int i = 0; i < wordList.size(); i++) {
-                   if (i % 2 == 0) {
+
                        fuckingFinal += wordList.get(i);
-                   }
+
                 }
                 resultTxv.setText(""+wordList.size());
                 clipboardManager.removePrimaryClipChangedListener(onPrimaryClipChangedListener);
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static int countWordsUsingSplit(String input) {
+    public int countWordsUsingSplit(String input) {
         if (input == null || input.isEmpty()) {
             return 0;
         }
@@ -137,14 +137,14 @@ public class MainActivity extends AppCompatActivity {
         return words.length;
     }
 
-    private static String inflections(String rawWord) {
+    private String inflections(String rawWord) {
         final String language = "en";
         final String word = rawWord;
         final String word_id = word.toLowerCase();
         return "https://od-api.oxforddictionaries.com:443/api/v2/lemmas/" + language + "/" + word_id;
     }
 
-    private static String dictionaryEntries(String wordToTranslate) {
+    private String dictionaryEntries(String wordToTranslate) {
         final String language = "en-gb";
         final String word = wordToTranslate;
         /*   final String fields = "pronunciations";*/
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         return "https://od-api.oxforddictionaries.com:443/api/v2/entries/" + language + "/" + word_id;
     }
 
-    private static class TakeEntriesTask extends AsyncTask<String, Integer, String> {
+    private class TakeEntriesTask extends AsyncTask<String, Integer, String> {
         private String trueWord;
         private boolean trueWordIsRaw;
         private String rawWord;
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static class TakeLemmaTask extends AsyncTask<String, Integer, String> {
+    private class TakeLemmaTask extends AsyncTask<String, Integer, String> {
         private String rawWord;
         private WeakReference<MainActivity> mainActivity;
         public TakeLemmaTask(String rawWord, MainActivity mainActivity) {
