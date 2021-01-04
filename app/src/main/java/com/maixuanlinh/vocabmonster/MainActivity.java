@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
             //TODO: replace with your own app id and app key
             final String app_id = "8188144a";
-            final String app_key = "1ad57e99ef1d6f0e1d32737a599bce9e";
+            final String app_key = "83af78585b53adde682406e60e4e571c";
 
             try {
                 URL url = new URL(params[0]);
@@ -270,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
 
             //TODO: replace with your own app id and app key
             final String app_id = "8188144a";
-            final String app_key = "1ad57e99ef1d6f0e1d32737a599bce9e";
+            final String app_key = "83af78585b53adde682406e60e4e571c";
             try {
                 URL url = new URL(params[0]);
                 HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
